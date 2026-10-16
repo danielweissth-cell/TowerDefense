@@ -1,0 +1,19 @@
+# Unreal generated folders
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+Build/
+Plugins/**/Binaries/
+Plugins/**/Intermediate/
+
+# IDE / OS
+.vscode/
+.idea/
+*.xcworkspace
+*.xcodeproj
+*.code-workspace
+.DS_Store
+
+# Per-user Claude settings
+.claude/settings.local.json
