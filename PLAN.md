@@ -188,8 +188,8 @@ Content/TD/
 - [ ] Пройти базовое обучение по редактору UE (курс Epic «Your First Hour in Unreal Engine», ~2–3 часа).
 - [x] Установить Git LFS, настроить удалённый репозиторий на выбранном сервисе, `.gitignore` для UE (GitHub, 2026-10-16).
 - [x] Создать C++ проект `TowerDefense`, проверить сборку (собирается, 2026-10-16).
-- [ ] Настройки проекта под телефоны (Mobile / Scalable, ориентация landscape, Android/iOS идентификаторы).
-- [ ] Включить плагины: Enhanced Input, Niagara, Gameplay Tags.
+- [x] Настройки проекта под телефоны (Mobile / Scalable, ориентация landscape, Android/iOS идентификаторы) (2026-10-16).
+- [x] Включить плагины: Enhanced Input, Niagara, Gameplay Tags (2026-10-16).
 - [x] Найден встроенный MCP-плагин Epic, клиент настроен (`.mcp.json`).
 - [x] Включить плагин **Unreal MCP** + наборы инструментов (список в CLAUDE.md), автозапуск сервера.
 - [x] Проверить подключение: Claude видит редактор через MCP (работает, 2026-10-16).
