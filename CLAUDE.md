@@ -104,13 +104,15 @@
 - **Unreal Engine 5.8.3**: `/Users/Shared/Epic Games/UE_5.8`. Версию движка посреди проекта **не меняем**.
 - **Xcode 27.0** (`/Applications/Xcode.app`). UE 5.8 поддерживает Xcode 15.2–27.9, рекомендованная версия 26.1.1.
   Если сборка падает со странными ошибками компилятора, первым делом проверить версию Xcode.
-- В движке установлены модули сборки **iOS и Android**.
+- Компоненты сборки под **iOS и Android** изначально **не были установлены** (нет `Engine/Binaries/IOS`, проверено 2026-10-17).
+  Ставятся в Epic Games Launcher: Library → 5.8.3 → ▼ → Options → Target Platforms.
 - Android: UE 5.8 требует NDK r27c (27.2.12479018), platform android-36, build-tools 36.0.0
   (см. `Engine/Config/Android/Android_SDK.json`). В `~/Library/Android/sdk` что-то уже есть, Android Studio не найдена.
 - iOS: сборка через Xcode, для запуска на iPhone нужен аккаунт Apple Developer.
 - Git 2.54 установлен; Git LFS 3.8.0 установлен через Homebrew (`/opt/homebrew`), `git lfs install` выполнен.
 - Редактор кода: VS Code (на рассмотрении Rider).
-- Корень UE-проекта: эта папка (`new1/`), файл проекта `TowerDefense.uproject` (будет создан на Этапе 0).
+- Корень UE-проекта: `~/Developer/TowerDefense`, файл проекта `TowerDefense.uproject`.
+  **Не класть проект в Desktop / Documents:** они синхронизируются с iCloud, iCloud добавляет атрибуты файлам и ломает подпись iOS (DECISIONS №42).
 - **Подключение к редактору: встроенный плагин Epic «Unreal MCP»** (`Engine/Plugins/Experimental/ModelContextProtocol`).
   - Сервер поднимается внутри открытого редактора: `http://127.0.0.1:8000/mcp`, клиент настроен в `.mcp.json`.
   - Работает **только когда редактор открыт**. Если MCP-инструменты недоступны, попросить пользователя открыть проект.
@@ -123,4 +125,7 @@
 - Полезные пути движка:
   - Сборка из терминала: `"/Users/Shared/Epic Games/UE_5.8/Engine/Build/BatchFiles/Mac/Build.sh"`
   - Редактор: `"/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealEditor.app"`
-  - Логи проекта: `Saved/Logs/` внутри проекта.
+  - Логи редактора: `~/Library/Logs/Unreal Engine/TowerDefenseEditor/`.
+  - Сборка на iPhone (из корня проекта, телефон подключён кабелем):
+    `"/Users/Shared/Epic Games/UE_5.8/Engine/Build/BatchFiles/RunUAT.sh" BuildCookRun -project="$PWD/TowerDefense.uproject" -platform=IOS -clientconfig=Development -build -cook -stage -pak -iostore -package -deploy -device=<UDID> -nop4 -utf8output -unattended`
+    UDID: `xcrun devicectl list devices`. Подпись: бесплатная Personal Team, профиль создан через xcodebuild с `-allowProvisioningDeviceRegistration`.
