@@ -62,6 +62,13 @@
   Проверять каждый экран на обоих языках.
 - Ключи текстов осмысленные: `Tower.Cannon.Name`, `UI.HUD.Gold`, а не случайные GUID.
 - Язык выбирается автоматически по системе, можно сменить в настройках; выбор сохраняется.
+- Шрифт интерфейса: `FNT_Rubik` (`Content/TD/UI/Fonts/`, начертания Regular / Medium / Bold). Другие шрифты не добавлять без причины.
+- **Обновление переводов** (после любого изменения текстов). Цель локализации `Game`, настройки в `Config/DefaultEditor.ini`,
+  сценарии в `Config/Localization/Game_*.ini`. Claude запускает их сам из терминала:
+  `"/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealEditor-Cmd" "$PWD/TowerDefense.uproject" -run=GatherText -config="Config/Localization/Game_<Gather|Compile|GenerateReports>.ini" -Unattended`
+  Порядок: Gather → перевод в `Content/Localization/Game/ru/Game.archive` (UTF-16, править с сохранением кодировки) → Compile → GenerateReports.
+  Если настройки цели менялись в `DefaultEditor.ini` при открытом редакторе, перед открытием Localization Dashboard редактор перезапустить,
+  иначе он перезапишет файл старыми настройками.
 
 ## 4. Стиль C++ (Epic Coding Standard)
 - Префикс проекта **`TD`** для всех классов: `ATDTowerBase`, `UTDHealthComponent`, `FTDWaveEntry`, `ETDTargetingMode`.
@@ -84,7 +91,7 @@
 ## 5. Имена ассетов в редакторе
 `BP_` Blueprint · `DA_` Data Asset · `DT_` Data Table · `WBP_` виджет · `M_` материал · `MI_` инстанс материала ·
 `SM_` статичный меш · `SK_` скелетный меш · `T_` текстура · `NS_` Niagara · `S_`/`SC_` звук/cue ·
-`IA_` Input Action · `IMC_` Input Mapping Context · `L_` уровень (карта).
+`IA_` Input Action · `IMC_` Input Mapping Context · `L_` уровень (карта) · `ST_` String Table · `FNT_` шрифт (Font) · `FF_` начертание (Font Face).
 Все ассеты проекта внутри `Content/TD/`.
 
 ## 6. Git
